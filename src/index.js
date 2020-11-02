@@ -1,29 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import ContextDemo from './contextlearn/ContextDemo'
-import './index.css'
-import AppState from './AppState';
-import LeftCel from './LeftCel';
-import ChildPop from './Popup/ChildPop'
-import InputContent from './InputContent';
-import PuseScroll from './hook/PuseScroll'
-// import UseStateFn from './hook/useStateFn';
-// import PuseRef from './hook/PuseRef';
-// import PuseEffect from './hook/PuseEffect';
+import store from './store'
+import ReduxHook from './store/ReduxHook'
+import { Provider } from "react-redux"
+console.log(store)
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-    <AppState />
-    {/* <PuseRef /> */}
-    <LeftCel />
-    <ChildPop />
-    <PuseScroll />
-    {/* <PuseEffect /> */}
-    {/* <UseStateFn /> */}
-    <InputContent />
-    <ContextDemo />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <ReduxHook />
+  </Provider>
+  ,
   document.getElementById('root')
 );
 
