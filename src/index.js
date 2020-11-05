@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import store from './store'
-import ReduxHook from './store/ReduxHook'
-import { Provider } from "react-redux"
-console.log(store)
+import './index.css'
+import App from './App';
+import store from './store/store'
+import { Provider } from 'react-redux';
 ReactDOM.render(
   <Provider store={store}>
-    <ReduxHook />
+     <App/>
   </Provider>
+ 
   ,
   document.getElementById('root')
 );

@@ -1,34 +1,26 @@
-import React, { Component } from 'react'
-import data from './data'
-import Dl from './Dl'
-export default class App extends Component {
-  state ={
-    openName:''
-  }
-  changeOpen=(name)=>{
-    this.setState({openName:name})
-  }
-  render() {
-    let {openName}=this.state
-    return (
-      <div className="friend-list">
-        {/* 注意data是一个对象,而非数组*/}
+import React, { Fragment } from 'react'
+
+import Title from './todo/Title';
+import Create from './todo/Create';
+import Todos from './todo/Todos';
+import State from './todo/State';
+import { useSelector } from 'react-redux';
+function App() {
+  let data = useSelector(state => state).todo
+  console.log('我是值')
+  console.log(data)
+  return (
+    <div id="todoapp">
+      <Title />
+      <div className="content">
+        <Create />
         {
-          Object.keys(data).map(itemName=>{
-            {/* key的作用和取值在文中详细介绍*/}
-            return <Dl 
-              key={itemName}
-              dlData={data[itemName]}
-              name = {itemName}
-              openName = {openName}
-              changeOpen = {this.changeOpen}
-            
-            />
-          })
+          data.length > 0 ? <Fragment><Todos />
+            <State /></Fragment > : ""
         }
-        {/* <Dl /> */}
       </div>
-    )
-  }
+    </div>
+  )
 }
 
+export default App
